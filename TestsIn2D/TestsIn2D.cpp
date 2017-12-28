@@ -10,9 +10,6 @@
 #include <ctime>
 #include <iostream>
 #include <assert.h>
-#include "TargetBox.h"
-#include "Turret.h"
-#include "Projectile.h"
 #include "ParabolaTarget.h"
 #include "ParabolaOrigin.h"
 #include "ParabolaProjectile.h"
@@ -20,59 +17,20 @@
 using namespace Gdiplus;
 #pragma comment (lib,"Gdiplus.lib")
 
-TargetBox* one;
-TargetBox* two;
-TargetBox* three;
-
-Turret* turret;
-Projectile* projectiles[3];
-
 ParabolaTarget* parabolaTarget = nullptr;
 ParabolaOrigin* parabolaOrigin = nullptr;
 ParabolaProjectile* parabolaProjectile = nullptr;
 
 VOID OnPaint(HDC hdc, Gdiplus::Graphics& graphics)
 {
-	if ( !(one && two && three && turret) )
+	if (parabolaTarget && parabolaOrigin && parabolaProjectile)
 	{
-		return;
+		parabolaTarget->Draw(hdc, graphics);
+		parabolaOrigin->Draw(hdc, graphics);
+
+		parabolaProjectile->Move();
+		parabolaProjectile->Draw(hdc, graphics);
 	}
-	
-	//one->Move();
-	//two->Move();
-	//three->Move();
-	//turret->Move();
-	//projectiles[0]->Move();
-	//projectiles[1]->Move();
-	//projectiles[2]->Move();
-
-	//one->Collision(640, 480);
-	//two->Collision(640, 480);
-	//three->Collision(640, 480);
-	//projectiles[0]->Collision(640, 480);
-	//projectiles[1]->Collision(640, 480);
-	//projectiles[2]->Collision(640, 480);
-
-
-
-	//one->Draw(hdc, graphics);
-	//two->Draw(hdc, graphics);
-	//three->Draw(hdc, graphics);
-	//turret->Draw(hdc, graphics);
-	//projectiles[0]->Draw(hdc, graphics);
-	//projectiles[1]->Draw(hdc, graphics);
-	//projectiles[2]->Draw(hdc, graphics);
-
-	//Font font(&FontFamily(L"Arial"), 12);
-	//LinearGradientBrush brush(Rect(0, 0, 100, 100), Color::Red, Color::Red, LinearGradientModeHorizontal);
-
-	//graphics.DrawString(L"Look at this text!", -1, &font, PointF(0, 0), &brush);
-
-	parabolaTarget->Draw(hdc, graphics);
-	parabolaOrigin->Draw(hdc, graphics);
-
-	parabolaProjectile->Move();
-	parabolaProjectile->Draw(hdc, graphics);
 }
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -117,28 +75,9 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow)
    ShowWindow(hWnd, iCmdShow);
    UpdateWindow(hWnd);
 
-   one = new TargetBox();
-   two = new TargetBox();
-   three = new TargetBox();
-
-   projectiles[0] = new Projectile();
-   projectiles[1] = new Projectile();
-   projectiles[2] = new Projectile();
-
-   turret = new Turret(projectiles, 3);
-
    parabolaTarget = new ParabolaTarget();
    parabolaOrigin = new ParabolaOrigin();
    parabolaProjectile = new ParabolaProjectile(parabolaOrigin, parabolaTarget);
-
-   one->SetPosition(100, 100);
-   one->SetWidth(80);
-   two->SetPosition(100, 200);
-   two->SetWidth(80);
-   three->SetPosition(100, 300);
-   three->SetWidth(80);
-
-   turret->SetPosition(320, 480);
    
 	bool done = false;
 	while(!done) // loop that runs while done = FALSE
@@ -159,19 +98,13 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow)
 			UpdateWindow(hWnd);
 		} // end if peekMessage
 	} // end while not done 
-   
-	delete one;
-	delete two;
-	delete three;
-
-	delete turret;
 
 	delete parabolaProjectile;
 	delete parabolaTarget;
 	delete parabolaOrigin;
 
    GdiplusShutdown(gdiplusToken);
-   return msg.wParam;
+   return (int)msg.wParam;
 }  // WinMain
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -238,10 +171,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				PostQuitMessage(WM_QUIT); // post quit message 
 				break;
 			case VK_RETURN:
-				if (turret)
-				{
-					turret->Fire();
-				}
 				break;
 			case VK_SPACE:
 				parabolaProjectile->Go();

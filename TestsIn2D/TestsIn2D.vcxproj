@@ -146,33 +146,25 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ClockFace.h" />
     <ClInclude Include="ParabolaOrigin.h" />
     <ClInclude Include="ParabolaProjectile.h" />
     <ClInclude Include="ParabolaTarget.h" />
-    <ClInclude Include="Projectile.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="TargetBox.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TestsIn2D.h" />
-    <ClInclude Include="Turret.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ClockFace.cpp" />
     <ClCompile Include="ParabolaOrigin.cpp" />
     <ClCompile Include="ParabolaProjectile.cpp" />
     <ClCompile Include="ParabolaTarget.cpp" />
-    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TargetBox.cpp" />
     <ClCompile Include="TestsIn2D.cpp" />
-    <ClCompile Include="Turret.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TestsIn2D.rc" />
