@@ -17,7 +17,7 @@ public:
 	void Draw(HDC hdc, Gdiplus::Graphics& graphics);
 
 	int xPos = 40;
-	int yPos = 400;
+	int yPos = 200;
 	int width = 10;
 	HBRUSH hOrange;
 };
