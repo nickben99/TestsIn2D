@@ -1,0 +1,9 @@
+.vs/
+.vscode/
+Debug/
+Release/
+
+*.sdf
+*.suo
+*.db
+*.user
