@@ -1,17 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="code">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="parabola">
+      <UniqueIdentifier>{99188981-2275-4a5a-bf91-f14687635f00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sphereCollision">
+      <UniqueIdentifier>{82942547-64a2-4994-a7b6-9add7abf05c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="math">
+      <UniqueIdentifier>{ba228312-4241-4c89-8137-0dbcb9d38ad2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -19,42 +24,69 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
+      <Filter>code</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
+      <Filter>code</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
+      <Filter>code</Filter>
     </ClInclude>
     <ClInclude Include="TestsIn2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ParabolaTarget.h">
-      <Filter>Header Files</Filter>
+      <Filter>code</Filter>
     </ClInclude>
     <ClInclude Include="ParabolaOrigin.h">
-      <Filter>Header Files</Filter>
+      <Filter>parabola</Filter>
     </ClInclude>
     <ClInclude Include="ParabolaProjectile.h">
-      <Filter>Header Files</Filter>
+      <Filter>parabola</Filter>
+    </ClInclude>
+    <ClInclude Include="ParabolaTarget.h">
+      <Filter>parabola</Filter>
+    </ClInclude>
+    <ClInclude Include="sphereCollision\SphereCollision.h">
+      <Filter>sphereCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="TestMode.h">
+      <Filter>code</Filter>
+    </ClInclude>
+    <ClInclude Include="math\CVector.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\CMatrix.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\CQuaternion.h">
+      <Filter>math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>code</Filter>
     </ClCompile>
     <ClCompile Include="TestsIn2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ParabolaTarget.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>code</Filter>
     </ClCompile>
     <ClCompile Include="ParabolaOrigin.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>parabola</Filter>
     </ClCompile>
     <ClCompile Include="ParabolaProjectile.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>parabola</Filter>
+    </ClCompile>
+    <ClCompile Include="ParabolaTarget.cpp">
+      <Filter>parabola</Filter>
+    </ClCompile>
+    <ClCompile Include="sphereCollision\SphereCollision.cpp">
+      <Filter>sphereCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="math\CVector.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\CMatrix.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\CQuaternion.cpp">
+      <Filter>math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

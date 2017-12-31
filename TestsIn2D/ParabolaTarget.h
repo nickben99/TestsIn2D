@@ -21,8 +21,8 @@ public:
 	void MoveDown();
 	void Draw(HDC hdc, Gdiplus::Graphics& graphics);
 
-	int xPos = 0;
-	int yPos = 0;
+	int xPos = 220;
+	int yPos = 230;
 	int width = 10;
 	int xVeloc;
 	int yVeloc;

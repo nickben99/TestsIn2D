@@ -4,6 +4,8 @@
 #include <windows.h>
 #include <chrono>
 
+#include "TestMode.h"
+
 namespace Gdiplus
 {
 	class Graphics;
@@ -12,15 +14,16 @@ namespace Gdiplus
 class ParabolaOrigin;
 class ParabolaTarget;
 
-class ParabolaProjectile
+class ParabolaProjectile : public TestMode
 {
 public:
-	ParabolaProjectile(ParabolaOrigin* ori, ParabolaTarget* targ);
-	void SetWidth(int newWidth);
+	ParabolaProjectile();
+	~ParabolaProjectile();
 
 	void Go();
-	void Move();
-	void Draw(HDC hdc, Gdiplus::Graphics& graphics);
+	virtual void Move() override;
+	virtual void Draw(HDC hdc, Gdiplus::Graphics& graphics) override;
+	virtual void KeyDown(WPARAM wParam) override;
 
 	int xPos = 0;
 	int yPos = 0;

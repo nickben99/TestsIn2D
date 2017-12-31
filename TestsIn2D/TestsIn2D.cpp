@@ -10,26 +10,23 @@
 #include <ctime>
 #include <iostream>
 #include <assert.h>
-#include "ParabolaTarget.h"
-#include "ParabolaOrigin.h"
+#include "TestMode.h"
 #include "ParabolaProjectile.h"
+#include "sphereCollision\SphereCollision.h"
 
 using namespace Gdiplus;
 #pragma comment (lib,"Gdiplus.lib")
 
-ParabolaTarget* parabolaTarget = nullptr;
-ParabolaOrigin* parabolaOrigin = nullptr;
+TestMode* currentMode = nullptr;
 ParabolaProjectile* parabolaProjectile = nullptr;
+SphereCollision* sphereCollision = nullptr;
 
 VOID OnPaint(HDC hdc, Gdiplus::Graphics& graphics)
 {
-	if (parabolaTarget && parabolaOrigin && parabolaProjectile)
+	if (currentMode)
 	{
-		parabolaTarget->Draw(hdc, graphics);
-		parabolaOrigin->Draw(hdc, graphics);
-
-		parabolaProjectile->Move();
-		parabolaProjectile->Draw(hdc, graphics);
+		currentMode->Move();
+		currentMode->Draw(hdc, graphics);
 	}
 }
 
@@ -75,9 +72,8 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow)
    ShowWindow(hWnd, iCmdShow);
    UpdateWindow(hWnd);
 
-   parabolaTarget = new ParabolaTarget();
-   parabolaOrigin = new ParabolaOrigin();
-   parabolaProjectile = new ParabolaProjectile(parabolaOrigin, parabolaTarget);
+   currentMode = parabolaProjectile = new ParabolaProjectile();
+   sphereCollision = new SphereCollision();
    
 	bool done = false;
 	while(!done) // loop that runs while done = FALSE
@@ -100,8 +96,7 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow)
 	} // end while not done 
 
 	delete parabolaProjectile;
-	delete parabolaTarget;
-	delete parabolaOrigin;
+	delete sphereCollision;
 
    GdiplusShutdown(gdiplusToken);
    return (int)msg.wParam;
@@ -170,36 +165,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			case VK_ESCAPE: // escape key
 				PostQuitMessage(WM_QUIT); // post quit message 
 				break;
-			case VK_RETURN:
+			case '0':
+				currentMode = parabolaProjectile;
 				break;
-			case VK_SPACE:
-				parabolaProjectile->Go();
+			case '1':
+				currentMode = sphereCollision;
 				break;
-			case VK_LEFT:
-				parabolaTarget->MoveLeft();
+			default:
+				currentMode->KeyDown(wParam);
 				break;
-			case VK_RIGHT:
-				parabolaTarget->MoveRight();
-				break;
-			case VK_UP:
-				parabolaTarget->MoveUp();
-				break;
-			case VK_DOWN:
-				parabolaTarget->MoveDown();
-				break;
-			case VK_F1:
-				parabolaProjectile->flightDuration += 1.0f;
-				break;
-			case VK_F2:
-				parabolaProjectile->flightDuration -= 1.0f;
-				break;
-			case VK_F3:
-				parabolaProjectile->arc += 0.05f;
-				break;
-			case VK_F4:
-				parabolaProjectile->arc -= 0.05f;
-				break;
-			default: break;
 		}							
 		return 0;
    default:

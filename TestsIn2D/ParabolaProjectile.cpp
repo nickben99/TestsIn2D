@@ -10,17 +10,51 @@
 using namespace Gdiplus;
 using namespace std::chrono;
 
-ParabolaProjectile::ParabolaProjectile(ParabolaOrigin* oriIn, ParabolaTarget* targIn)
-	: ori(oriIn)
-	, targ(targIn)
+ParabolaProjectile::ParabolaProjectile()
+	: ori(new ParabolaOrigin())
+	, targ(new ParabolaTarget())
 {
 	hOrange = CreateSolidBrush(RGB(255, 180, 0));
 	prevTime = high_resolution_clock::now();
+	Go();
 }
 
-void ParabolaProjectile::SetWidth(int newWidth)
+ParabolaProjectile::~ParabolaProjectile()
 {
-	width = newWidth;
+	delete ori;
+	delete targ;
+}
+
+void ParabolaProjectile::KeyDown(WPARAM wParam)
+{
+	switch (wParam)
+	{
+	case VK_LEFT:
+		targ->MoveLeft();
+		break;
+	case VK_RIGHT:
+		targ->MoveRight();
+		break;
+	case VK_UP:
+		targ->MoveUp();
+		break;
+	case VK_DOWN:
+		targ->MoveDown();
+		break;
+	case VK_F1:
+		flightDuration += 1.0f;
+		break;
+	case VK_F2:
+		flightDuration -= 1.0f;
+		break;
+	case VK_F3:
+		arc += 0.05f;
+		break;
+	case VK_F4:
+		arc -= 0.05f;
+		break;
+	default: break;
+	}				
 }
 
 void ParabolaProjectile::Go()
@@ -54,16 +88,23 @@ void ParabolaProjectile::Move()
 	}
 }
 
+void DrawHeading(Font& font, LinearGradientBrush& brush, Gdiplus::Graphics& graphics)
+{
+	std::wstring heading(L"Parabola Tests (mode: 0)");
+	graphics.DrawString(heading.c_str(), -1, &font, PointF((Gdiplus::REAL)0, (Gdiplus::REAL)0), &brush);
+}
+
 void ParabolaProjectile::Draw(HDC hdc, Gdiplus::Graphics& graphics)
 {
+	Font font(&FontFamily(L"Arial"), 12);
+	LinearGradientBrush brush(Rect(0, 0, 100, 100), Color::Red, Color::Red, LinearGradientModeHorizontal);
+	DrawHeading(font, brush, graphics);
+
 	RECT secondbackground;
 
 	int widthDiv2 = (width / 2);
 	SetRect(&secondbackground, xPos - widthDiv2, yPos - widthDiv2, xPos + widthDiv2, yPos + widthDiv2);
-	FillRect(hdc, &secondbackground, hOrange);
-
-	Font font(&FontFamily(L"Arial"), 12);
-	LinearGradientBrush brush(Rect(0, 0, 100, 100), Color::Red, Color::Red, LinearGradientModeHorizontal);
+	FillRect(hdc, &secondbackground, hOrange);	
 
 	std::wstring posString(L"x: ");
 	posString += std::to_wstring(xPos);
@@ -75,4 +116,7 @@ void ParabolaProjectile::Draw(HDC hdc, Gdiplus::Graphics& graphics)
 	posString += std::to_wstring(arc);
 
 	graphics.DrawString(posString.c_str(), -1, &font, PointF((Gdiplus::REAL)xPos, (Gdiplus::REAL)yPos), &brush);
+
+	targ->Draw(hdc, graphics);
+	ori->Draw(hdc, graphics);
 }

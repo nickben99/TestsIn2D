@@ -102,6 +102,10 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -146,18 +150,27 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="math\CMatrix.h" />
+    <ClInclude Include="math\CQuaternion.h" />
+    <ClInclude Include="math\CVector.h" />
     <ClInclude Include="ParabolaOrigin.h" />
     <ClInclude Include="ParabolaProjectile.h" />
     <ClInclude Include="ParabolaTarget.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="sphereCollision\SphereCollision.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TestMode.h" />
     <ClInclude Include="TestsIn2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="math\CMatrix.cpp" />
+    <ClCompile Include="math\CQuaternion.cpp" />
+    <ClCompile Include="math\CVector.cpp" />
     <ClCompile Include="ParabolaOrigin.cpp" />
     <ClCompile Include="ParabolaProjectile.cpp" />
     <ClCompile Include="ParabolaTarget.cpp" />
+    <ClCompile Include="sphereCollision\SphereCollision.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
