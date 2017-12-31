@@ -11,7 +11,7 @@
 #include <iostream>
 #include <assert.h>
 #include "TestMode.h"
-#include "ParabolaProjectile.h"
+#include "parabola\ParabolaProjectile.h"
 #include "sphereCollision\SphereCollision.h"
 
 using namespace Gdiplus;

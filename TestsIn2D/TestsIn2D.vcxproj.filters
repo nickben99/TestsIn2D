@@ -35,15 +35,6 @@
     <ClInclude Include="TestsIn2D.h">
       <Filter>code</Filter>
     </ClInclude>
-    <ClInclude Include="ParabolaOrigin.h">
-      <Filter>parabola</Filter>
-    </ClInclude>
-    <ClInclude Include="ParabolaProjectile.h">
-      <Filter>parabola</Filter>
-    </ClInclude>
-    <ClInclude Include="ParabolaTarget.h">
-      <Filter>parabola</Filter>
-    </ClInclude>
     <ClInclude Include="sphereCollision\SphereCollision.h">
       <Filter>sphereCollision</Filter>
     </ClInclude>
@@ -59,6 +50,15 @@
     <ClInclude Include="math\CQuaternion.h">
       <Filter>math</Filter>
     </ClInclude>
+    <ClInclude Include="parabola\ParabolaOrigin.h">
+      <Filter>parabola</Filter>
+    </ClInclude>
+    <ClInclude Include="parabola\ParabolaProjectile.h">
+      <Filter>parabola</Filter>
+    </ClInclude>
+    <ClInclude Include="parabola\ParabolaTarget.h">
+      <Filter>parabola</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -66,15 +66,6 @@
     </ClCompile>
     <ClCompile Include="TestsIn2D.cpp">
       <Filter>code</Filter>
-    </ClCompile>
-    <ClCompile Include="ParabolaOrigin.cpp">
-      <Filter>parabola</Filter>
-    </ClCompile>
-    <ClCompile Include="ParabolaProjectile.cpp">
-      <Filter>parabola</Filter>
-    </ClCompile>
-    <ClCompile Include="ParabolaTarget.cpp">
-      <Filter>parabola</Filter>
     </ClCompile>
     <ClCompile Include="sphereCollision\SphereCollision.cpp">
       <Filter>sphereCollision</Filter>
@@ -87,6 +78,15 @@
     </ClCompile>
     <ClCompile Include="math\CQuaternion.cpp">
       <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="parabola\ParabolaOrigin.cpp">
+      <Filter>parabola</Filter>
+    </ClCompile>
+    <ClCompile Include="parabola\ParabolaProjectile.cpp">
+      <Filter>parabola</Filter>
+    </ClCompile>
+    <ClCompile Include="parabola\ParabolaTarget.cpp">
+      <Filter>parabola</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

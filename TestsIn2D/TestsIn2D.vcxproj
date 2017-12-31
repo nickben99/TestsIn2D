@@ -153,9 +153,9 @@
     <ClInclude Include="math\CMatrix.h" />
     <ClInclude Include="math\CQuaternion.h" />
     <ClInclude Include="math\CVector.h" />
-    <ClInclude Include="ParabolaOrigin.h" />
-    <ClInclude Include="ParabolaProjectile.h" />
-    <ClInclude Include="ParabolaTarget.h" />
+    <ClInclude Include="parabola\ParabolaOrigin.h" />
+    <ClInclude Include="parabola\ParabolaProjectile.h" />
+    <ClInclude Include="parabola\ParabolaTarget.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="sphereCollision\SphereCollision.h" />
     <ClInclude Include="stdafx.h" />
@@ -167,9 +167,9 @@
     <ClCompile Include="math\CMatrix.cpp" />
     <ClCompile Include="math\CQuaternion.cpp" />
     <ClCompile Include="math\CVector.cpp" />
-    <ClCompile Include="ParabolaOrigin.cpp" />
-    <ClCompile Include="ParabolaProjectile.cpp" />
-    <ClCompile Include="ParabolaTarget.cpp" />
+    <ClCompile Include="parabola\ParabolaOrigin.cpp" />
+    <ClCompile Include="parabola\ParabolaProjectile.cpp" />
+    <ClCompile Include="parabola\ParabolaTarget.cpp" />
     <ClCompile Include="sphereCollision\SphereCollision.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
